@@ -1,6 +1,7 @@
 # IO
 
-(1) Compile executable program
+1\. Compile executable program
+-------------------
 
 ```
 ghc HelloWorld.hs
@@ -9,7 +10,8 @@ ghc HelloWorld.hs
 
 How can this be pure if it modifies an external state, i.e. write to console?
 
-(2) IO Actions
+2\. IO Actions
+-------------------
 
 In ghci, `:t putStrLn` gives us `putStrLn :: String -> IO ()`
 
@@ -30,7 +32,8 @@ main2 :: IO ()
 main2 = putStrLn "Hello World 2" -- no printed
 ```
 
-(3) Combine IO Actions
+3\. Combine IO Actions
+-------------------
 
 Use do-blocks to combine IO actions:
 
@@ -69,7 +72,8 @@ main = do
     introduce "Alice" "Sally"
 ```
 
-(4) IO Values
+4\. IO Values
+-------------------
 
 ```
 main :: IO ()
@@ -113,7 +117,8 @@ extractValue :: IO a -> a
 
 The only exception is `unsafePerformIO`. We should not use it at all!
 
-(5) Useful IO Functions
+5\. Useful IO Functions
+-------------------
 
 `return` function:
 
@@ -238,7 +243,8 @@ main :: IO ()
 main = interact reverseLines
 ```
 
-(6) Program Organization
+6\. Program Organization
+-------------------
 
 Example program that is written in "traditional" programming style.
 
