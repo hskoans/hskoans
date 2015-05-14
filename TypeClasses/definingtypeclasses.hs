@@ -3,7 +3,7 @@
 
 module Main where
 
-import Prelude hiding (/=)
+import Prelude hiding ((==), (/=))
 
 -- An example definition of Type Class `Eq`
 class Eq a where
@@ -14,4 +14,5 @@ class Eq a where
     x == y = not (x /= y)
     
 
+main ::  IO ()
 main = print "hello"
