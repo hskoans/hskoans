@@ -12,3 +12,9 @@ green = RGB 0 255 0
 
 main ::  IO ()
 main = print green
+
+-- Commonly used deriving Type Class instances
+-- Eq
+-- Ord
+-- Show
+-- Read
