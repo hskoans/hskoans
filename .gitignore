@@ -1,4 +1,11 @@
 # Created by https://www.gitignore.io
+#
+# Ignore all
+*
+
+# Unignore all with extensions
+!*.*
+!*/
 
 ### Haskell ###
 dist
@@ -17,4 +24,3 @@ cabal.sandbox.config
 *.prof
 *.aux
 *.hp
-
