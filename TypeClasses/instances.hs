@@ -40,3 +40,12 @@ main = do
     print (show greenInColors)
 
 -- Type Class Instances for Parameterized Types
+-- `(Eq a)` is the class constraint applied on `a`.
+
+data Maybe' a = Nothing' | Just' a
+
+instance (Eq a) => Eq (Maybe' a) where
+    Nothing' == Nothing' = True
+    Nothing' == (Just' _) = False
+    (Just' _) == Nothing' = False
+    (Just' x) == (Just' y) = x == y
