@@ -1,6 +1,11 @@
 import System.IO
 import Data.Char (toUpper)
 
+-- there are 4 possible file operation modes, typed as IOMode
+-- ReadMode
+-- WriteMode
+-- ReadWriteMode
+-- AppendMode
 main :: IO ()
 main = do
     inh <- openFile "input.txt" ReadMode
