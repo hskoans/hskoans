@@ -1,6 +1,8 @@
 -- Ord is a subclass of Eq
 --
 
+module Main where
+
 class (Eq a) => Ord a where
     (<) :: a -> a -> Bool
     (>) :: a -> a -> Bool
@@ -11,3 +13,6 @@ class (Eq a) => Ord a where
     min :: a -> a -> a
 
 data Ordering' = LT | EQ | GT
+
+main ::  IO ()
+main = print "hello"
