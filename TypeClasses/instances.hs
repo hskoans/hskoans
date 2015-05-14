@@ -38,3 +38,5 @@ main = do
 
     print greenInColors
     print (show greenInColors)
+
+-- Type Class Instances for Parameterized Types
