@@ -1,6 +1,7 @@
 # Higher Order Functions
 
 * Functions with function arguments
+
 * Create functions on the fly
     * Partial function application
     * Lambda expressions
@@ -11,13 +12,6 @@
     * Created on the fly
     * higher order functions
 
-    e.g.
+* Partial Application
 
-```
-pass3 f = f 3
-
-add1 x = x + 1
-
-pass3 add1 -- gives us 4
-```
-
+* Operators
