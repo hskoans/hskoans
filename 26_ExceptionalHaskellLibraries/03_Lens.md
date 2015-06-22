@@ -125,3 +125,109 @@ goals :: Lens' PlayerStats Int
 
 (playerStats . goals) :: Lens' Player Int
 ```
+
+Updating data with Lens:
+
+```
+setPlayerSalary :: Player -> Int -> Player
+setPlayerSalary player newSalary =
+  (playerSalary .~ newSalary) player
+```
+
+Alternatively:
+
+```
+setPlayerSalary :: Player -> Int -> Player
+setPlayerSalary player newSalary =
+  (player & playerSalary .~ newSalary) player
+
+-- Usage
+player.playerSalary = newSalary;
+```
+
+Incremental update:
+
+```
+increasePlayerSalary :: Player -> Int -> Player
+increasePlayerSalary player raise =
+  player & playerSalary +~ raise
+
+player.playerSalary += raise
+
+-- Usage
+player.playerSalary += raise;
+```
+
+Nice! Looks a lot like how we would do things in imperative languages.
+
+Nested update:
+
+```
+incrementPlayerGoals :: Player -> Player
+incrementPlayerGoals player =
+  player & playerStats . goals +~ 1
+
+-- Usage
+player.playerStats.goals += 1
+```
+
+Lists:
+
+```
+incrAllPlayersGamesPlayed :: Team -> Team
+incrAllPlayersGamesPlayed team =
+  team & teamPlayers . traverse
+    . playerStats . gamesPlayed +~ 1
+
+-- The function signature for traverse is
+-- traverse :: Lens' [a] a
+```
+
+This is a special power of functional languages.
+
+In imperative languages, we would have to write a loop:
+
+```
+foreach (player in team.teamPlayers)
+  player.playerStats.gamesPlayed += 1;
+```
+
+more:
+
+```
+totalGamesPlayed :: Team -> List
+totalGamesPlayed team =
+  team & sumOf ( teamPlayers . traverse . playerStats . gamesPlayed )
+```
+
+## Lens: creating lenses
+
+How do we make our data types have lens-like functionalities as shown above?
+
+```
+{-# LANGUAGE TemplateHaskell #-}
+
+data Player = Player
+  { _playerName :: String
+  , _playerSalary :: Int
+  , _playerStats :: PlayerStats }
+
+makeLenses ''Player
+```
+
+The language extension TemplateHaskell generates more code from the given declaration.
+
+Now our Player data type has lens capabilities.
+
+In particular, these code are generated at compile-time:
+
+```
+playerName :: Lens' Player String
+playerSalary :: Lens' Player Int
+playerStats :: Lens' Player PlayerStats
+```
+
+## Summary of Lens
+
+* Easy access and manipulation of nested data
+* Steep learning curve
